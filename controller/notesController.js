@@ -1,6 +1,16 @@
 const notesModel = require('../model/notesModel')
 
 module.exports = {
+    listNotes: (req, res) => {
+        notesModel.find({}, (err, docs) => {
+            if (err) {
+                return res.send({ rCode: 500, rMsg: 'Internal Server Error.', rData: [] })
+            }
+            if (docs) {
+                return res.send({ rCode: 200, rMsg: 'Success.', rData: docs })
+            }
+        })
+    },
     addNotes: (req, res) => {
         const { title, description } = req.body
         if (!title || !description) {
