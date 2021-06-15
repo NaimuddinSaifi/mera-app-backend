@@ -4,6 +4,7 @@ const cors = require('cors')
 
 const userRouter = require('./router/userRouter')
 const queryRouter = require('./router/queryRouter')
+const notesRouter = require('./router/notesRouter')
 
 const port = process.env.PORT || 3001
 const app = express()
@@ -26,6 +27,9 @@ app.use('/user', userRouter)
 // routes for query
 app.use('/query', queryRouter)
 
+// routes for notes
+app.use('/notes', notesRouter)
+
 app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`)
+    console.log(`Server listening at port:${port}`)
 })
