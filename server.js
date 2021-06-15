@@ -8,7 +8,7 @@ const queryRouter = require('./router/queryRouter')
 const port = process.env.PORT || 3001
 const app = express()
 
-// db connection
+// db connectionssss
 require('./db/db')
 
 // for cross requests
