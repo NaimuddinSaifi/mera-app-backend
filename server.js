@@ -4,7 +4,10 @@ const cors = require('cors')
 
 const userRouter = require('./router/userRouter')
 const queryRouter = require('./router/queryRouter')
+const memoryRouter = require('./router/memoryRouter')
 const notesRouter = require('./router/notesRouter')
+const favsRouter = require('./router/favsRouter')
+const todosRouter = require('./router/todosRouter')
 
 const port = process.env.PORT || 3001
 const app = express()
@@ -27,8 +30,11 @@ app.use('/user', userRouter)
 // routes for query
 app.use('/query', queryRouter)
 
-// routes for notes
+// routes 
+app.use('/memory', memoryRouter)
 app.use('/notes', notesRouter)
+app.use('/favs', favsRouter)
+app.use('/todos', todosRouter)
 
 app.listen(port, () => {
     console.log(`Server listening at port:${port}`)
