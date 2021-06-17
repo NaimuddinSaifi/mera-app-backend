@@ -27,8 +27,8 @@ module.exports = {
         }
     },
     deleteTodo: (req, res) => {
-        const { noteId } = req.params
-        model.findByIdAndDelete({ _id: noteId }, (err, deleted) => {
+        const { todoId } = req.params
+        model.findByIdAndDelete({ _id: todoId }, (err, deleted) => {
             if (err) {
                 return res.send({ rCode: 500, rMsg: 'Internal Server Error.', rData: [] })
             }

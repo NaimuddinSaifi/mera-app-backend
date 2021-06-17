@@ -1,8 +1,8 @@
-const notesModel = require('../model/notesModel')
+const model = require('../model/favsModel')
 
 module.exports = {
     listFavs: (req, res) => {
-        notesModel.find({}, (err, docs) => {
+        model.find({}, (err, docs) => {
             if (err) {
                 return res.send({ rCode: 500, rMsg: 'Internal Server Error.', rData: [] })
             }
@@ -16,7 +16,7 @@ module.exports = {
         if (!title || !description) {
             res.send({ rCode: 400, rMsg: 'Bad Request', rData: [] })
         } else {
-            new notesModel(req.body).save((err, saved) => {
+            new model(req.body).save((err, saved) => {
                 if (err) {
                     return res.send({ rCode: 500, rMsg: 'Internal Server Error.', rData: [] })
                 }
@@ -27,8 +27,8 @@ module.exports = {
         }
     },
     deleteFav: (req, res) => {
-        const { noteId } = req.params
-        notesModel.findByIdAndDelete({ _id: noteId }, (err, deleted) => {
+        const { favId } = req.params
+        model.findByIdAndDelete({ _id: favId }, (err, deleted) => {
             if (err) {
                 return res.send({ rCode: 500, rMsg: 'Internal Server Error.', rData: [] })
             }
